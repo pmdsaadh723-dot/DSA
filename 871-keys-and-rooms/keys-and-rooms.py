@@ -1,9 +1,5 @@
-class Solution(object):
-    def canVisitAllRooms(self, rooms):
-        """
-        :type rooms: List[List[int]]
-        :rtype: bool
-        """
+class Solution:
+    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
         visited = set()
         def dfs(room):
             visited.add(room)
