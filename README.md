@@ -1,8 +1,8 @@
 <div align="center">
 
-# DSA
+DSA
 
-### 💻 Leetcode (Python)
+💻 Leetcode (Python)
 
 repository to my **LeetCode** problem solutions.
 
