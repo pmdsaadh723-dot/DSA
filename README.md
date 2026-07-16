@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🧠 DSA
+# DSA
 
 ### 💻 Leetcode (Python)
 
