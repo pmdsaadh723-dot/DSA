@@ -13,13 +13,13 @@ class Solution {
                 if (st.isEmpty()) return false; 
                 
                 char top = st.pop(); 
-                // Fixed the typo in the third condition below
+                
                 if ((a == ')' && top != '(') || (a == ']' && top != '[') || (a == '}' && top != '{')) { 
                     return false; 
                 } 
             } 
         } 
-        // Fixed to ensure no unclosed brackets remain in the stack
+        
         return st.isEmpty(); 
     } 
 }
