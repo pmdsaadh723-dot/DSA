@@ -1,10 +1,16 @@
+import java.util.Arrays;
+
 class Solution {
     public int[] transformArray(int[] nums) {
-        int[] r = new int[nums.length];
-        int rp = r.length-1;
-        for(int c : nums) {
-            if(c % 2 == 1) r[rp--] = 1;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] % 2 == 0) {
+                nums[i] = 0;
+            } else {
+                nums[i] = 1;
+            }
         }
-        return r;
+
+        Arrays.sort(nums);
+        return nums;
     }
 }
