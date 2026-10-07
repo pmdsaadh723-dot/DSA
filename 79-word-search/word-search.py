@@ -1,22 +1,29 @@
 class Solution:
-    def rec(self, r, c, m, n, ind, board, word):
-        if ind == len(word):
-            return True
-        if r < 0 or c < 0 or r >= m or c >= n or board[r][c] != word[ind]:
-            return False
-        temp = board[r][c]
-        board[r][c] = '#'
-        down = self.rec(r + 1, c, m, n, ind + 1, board, word)
-        up = self.rec(r - 1, c, m, n, ind + 1, board, word)
-        left = self.rec(r, c - 1, m, n, ind + 1, board, word)
-        right = self.rec(r, c + 1, m, n, ind + 1, board, word)
-        board[r][c] = temp
-        return up or down or left or right
     def exist(self, board: list[list[str]], word: str) -> bool:
-        m, n = len(board), len(board[0])
-        for i in range(m):
-            for j in range(n):
-                if board[i][j] == word[0]:
-                    if self.rec(i, j, m, n, 0, board, word):
+        rows = len(board)
+        cols = len(board[0])
+        def dfs(row: int, col: int, visited: list, index: int) -> bool:
+            if row < 0 or row >= rows or col < 0 or col >= cols:
+                return False
+            if visited[row][col]:
+                return False
+            if board[row][col] == word[index]:
+                index += 1
+            else:
+                return False
+            if index == len(word):
+                return True
+            visited[row][col] = True
+            up = dfs(row - 1, col, visited, index)
+            down = dfs(row + 1, col, visited, index)
+            left = dfs(row, col - 1, visited, index)
+            right = dfs(row, col + 1, visited, index)
+            visited[row][col] = False
+            return up or down or left or right
+        for row in range(rows):
+            for col in range(cols):
+                visited = [[False] * cols for _ in range(rows)]
+                if board[row][col] == word[0]:
+                    if dfs(row, col, visited, 0):
                         return True
         return False
